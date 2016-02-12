@@ -31,31 +31,28 @@ public class ApplePicker : MonoBehaviour
 			basketList.Add ( tBasketGO );
 		
 
-		}
-
-	
-
-			
-			int basketIndex = basketList.Count-1;
-			
-			GameObject tBasketGo = basketList[basketIndex];
-			basketList.RemoveAt( basketIndex );
-			Destroy( tBasketGo );
-			
-			if ( basketList.Count == 0 )
-			{
-				Application.LoadLevel( "_Scene_0" );
 			}
-
 		}
+
 	public void AppleDestroyed() 
 	{
-		GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
+		GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag ("Apple");
 		foreach ( GameObject tGO in tAppleArray ) 
 		{
 			Destroy( tGO );
 			
 		}
+
+	int basketIndex = basketList.Count-1;
+	
+	GameObject tBasketGo = basketList[basketIndex];
+	basketList.RemoveAt( basketIndex );
+	Destroy( tBasketGo );
+	
+	if ( basketList.Count == 0 )
+	{
+		Application.LoadLevel( "_Scene_0" );
+	   }
 	
 	}
 }
