@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Basket : MonoBehaviour {
+public class Basket : MonoBehaviour 
+
+		{
 
 	// Use this for initialization
 	public GUIText 	scoreGT;
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+
+	  {
 
 		Vector3 mousePos2D = Input.mousePosition;
 
@@ -20,27 +24,40 @@ public class Basket : MonoBehaviour {
 		this.transform.position = pos;
 	
 	}
-	void Start () {
-
+	void Start ()
+			
+	{
+		
 		GameObject scoreGO = GameObject.Find("ScoreCounter");
-
+		
 		scoreGT = scoreGO.GetComponent<GUIText> ();
-
+		
 		scoreGT.text = "0";
 	}
 
 
-	void OnCollisionEnter( Collision coll ) {
+
+	void OnCollisionEnter( Collision coll ) 
+	
+		{
 
 		GameObject collidedWith = coll.gameObject;
-		if (collidedWith.tag == "Apple") {
+		if (collidedWith.tag == "Apple") 
+		{
 			Destroy( collidedWith );
 		}
 
-		int score = int.Parse (scoreGT.text);
-
+		int score = int.Parse ( scoreGT.text );
+		
 		score += 100;
+		
+		scoreGT.text = score.ToString();
 
-		scoreGT.text = score.ToString ();
+	
+			//Track the high score
+		if (score > HighScore.score) 
+			{
+			HighScore.score = score;
+			}
 	}
 }
